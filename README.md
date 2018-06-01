@@ -101,8 +101,8 @@ ON UPDATE NO ACTION ON DELETE NO ACTION
 	Put the following JSON in request message body.
 
 	{
-		"title": "First note",
-		"content": "This is some text in the first note"
+		"title": "Title of the note",
+		"content": "This is some text in the note"
 	}
 
 4. Update an existing note (for id=2)
@@ -114,8 +114,8 @@ ON UPDATE NO ACTION ON DELETE NO ACTION
 	Put the following JSON in request message body.
 
 	{
-		"title": "Third note",
-		"content": "Maecenas lobortis ante vel dolor eleifend varius. Vestibulum vehicula vehicula libero, eget faucibus turpis blandit dignissim."
+		"title": "Updated title",
+		"content": "This is some updated content of the note"
 	}
 
 5. Delete a note (for id=4)
