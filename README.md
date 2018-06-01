@@ -15,7 +15,7 @@ API development environment: Postman
 
 ### Steps how to run scripts that will setup database for the project
 
-/* On your Local instance MySQL Router */
+/* Open MySQL Workbench On and create user on your Local instance MySQL Router */
 
 /* Create user */
 
