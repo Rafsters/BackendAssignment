@@ -2,6 +2,10 @@ package pl.backendassignment.dao;
 
 import java.util.List;
 
+import org.hibernate.envers.AuditReader;
+import org.hibernate.envers.AuditReaderFactory;
+import org.hibernate.envers.query.AuditEntity;
+import org.hibernate.envers.query.AuditQuery;
 import pl.backendassignment.entity.Note;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -34,9 +38,8 @@ public class NoteDAOImpl implements NoteDAO {
 	public void saveNote(Note theNote) {
 
 		Session currentSession = sessionFactory.getCurrentSession();
-
 		currentSession.saveOrUpdate(theNote);
-		
+
 	}
 
 	@Override
@@ -45,7 +48,7 @@ public class NoteDAOImpl implements NoteDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 
 		Note theNote = currentSession.get(Note.class, theId);
-		
+
 		return theNote;
 	}
 
@@ -61,6 +64,21 @@ public class NoteDAOImpl implements NoteDAO {
 		theQuery.executeUpdate();		
 	}
 
+	@Override
+	public List<Note> getHistoryOfChangesForNote(int theId) {
+		Session currentSession = sessionFactory.getCurrentSession();
+
+		AuditReader auditReader = AuditReaderFactory.get(currentSession);
+		AuditQuery q = auditReader.createQuery().forRevisionsOfEntity(Note.class, true, true);
+		q.add(AuditEntity.id().eq(theId));
+		List<Note> audit = q.getResultList();
+		for (Note n :
+				audit) {
+			System.out.println(n);
+		}
+
+		return audit;
+	}
 }
 
 

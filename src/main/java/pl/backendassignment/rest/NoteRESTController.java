@@ -19,14 +19,13 @@ public class NoteRESTController {
 
     @GetMapping("/notes")
     public List<Note> getNotes() {
-
         return noteService.getNotes();
     }
 
     @GetMapping("/notes/{theNoteId}")
     public Note getNote(@PathVariable int theNoteId) {
 
-        if(theNoteId > noteService.getNotes().size() || theNoteId < 0) {
+        if(theNoteId < 0) {
             System.out.println("Error not found");
             throw new NoteNotFoundException("Note id not found: " + theNoteId);
         }
@@ -37,8 +36,8 @@ public class NoteRESTController {
 
     @PostMapping("/notes")
     public Note addNote(@RequestBody Note theNote) {
-        if(theNote.getTitle().isEmpty() || theNote.getTitle() == null){
-            throw new NoteWrongInputException("Wrong input");
+        if(theNote.getTitle().isEmpty() || theNote.getTitle() == null || theNote.getContent().isEmpty() || theNote.getContent() == null){
+            throw new NoteWrongInputException("Input data cannot be empty");
         }
         noteService.saveNote(theNote);
 
@@ -64,26 +63,16 @@ public class NoteRESTController {
         return "Deleted note id: " + theNoteId;
     }
 
-    @ExceptionHandler
-    public ResponseEntity<NoteErrorResponse> handleException(NoteNotFoundException exc){
+    @GetMapping("/notes/history/{theNoteId}")
+    public List<Note> getHistoryOfChangesForNote(@PathVariable int theNoteId) {
 
-        NoteErrorResponse noteErrorResponse = new NoteErrorResponse();
-        noteErrorResponse.setStatus(HttpStatus.NOT_FOUND.value());
-        noteErrorResponse.setMessage(exc.getMessage());
-        noteErrorResponse.setTimeStamp(System.currentTimeMillis());
+        if(theNoteId < 0) {
+            System.out.println("Error not found");
+            throw new NoteNotFoundException("Note id not found: " + theNoteId);
+        }
 
-        return new ResponseEntity<>(noteErrorResponse, HttpStatus.NOT_FOUND);
-    }
+        return noteService.getHistoryOfChangesForNote(theNoteId);
 
-    @ExceptionHandler
-    public ResponseEntity<NoteErrorResponse> handleException(NoteWrongInputException exc){
-
-        NoteErrorResponse noteErrorResponse = new NoteErrorResponse();
-        noteErrorResponse.setStatus(HttpStatus.BAD_REQUEST.value());
-        noteErrorResponse.setMessage(exc.getMessage());
-        noteErrorResponse.setTimeStamp(System.currentTimeMillis());
-
-        return new ResponseEntity<>(noteErrorResponse, HttpStatus.BAD_REQUEST);
     }
 
 }

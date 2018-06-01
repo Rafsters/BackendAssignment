@@ -25,7 +25,7 @@ public class Note {
 
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
-	@Column(name = "created", updatable = false)
+	@Column(name = "created", updatable=false)
 	private Date created;
 
 	@UpdateTimestamp
@@ -33,20 +33,21 @@ public class Note {
 	@Column(name = "modified")
 	private Date updated;
 
-	@Version
-	@Column(name = "version")
-	private long version;
 
-	public long getVersion() {
-		return version;
-	}
-
-	public void setVersion(long version) {
-		this.version = version;
-	}
+	// Version causes optimistic locking error
+//	@Version
+//	private long version;
+//
+//	public long getVersion() {
+//		return version;
+//	}
+//
+//	public void setVersion(long version) {
+//		this.version = version;
+//	}
 
 	public Note() {
-		
+
 	}
 
 	public int getId() {

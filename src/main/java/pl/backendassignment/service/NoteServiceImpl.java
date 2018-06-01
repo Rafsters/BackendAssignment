@@ -2,6 +2,7 @@ package pl.backendassignment.service;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Isolation;
 import pl.backendassignment.dao.NoteDAO;
 import pl.backendassignment.entity.Note;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +41,12 @@ public class NoteServiceImpl implements NoteService {
 	public void deleteNote(int theId) {
 		
 		noteDAO.deleteNote(theId);
+	}
+
+	@Transactional
+	@Override
+	public List<Note> getHistoryOfChangesForNote(int theId) {
+		return noteDAO.getHistoryOfChangesForNote(theId);
 	}
 }
 

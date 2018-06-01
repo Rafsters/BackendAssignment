@@ -13,5 +13,7 @@ public interface NoteDAO {
 	public Note getNote(int theId);
 
 	public void deleteNote(int theId);
+
+	public List<Note> getHistoryOfChangesForNote(int theId);
 	
 }
