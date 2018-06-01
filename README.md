@@ -3,9 +3,12 @@
 ### What is required for running the project
 
 Database: MySQL 8.0.11
+
 IDE: IntelliJ IDEA with Maven
+
 Server: Tomcat server 9.0.6
-Postman
+
+API development environment: Postman
 
 ### Steps how to run scripts that will setup database for the project
 
@@ -80,39 +83,39 @@ ON UPDATE NO ACTION ON DELETE NO ACTION
 
 1. Get a list of notes
 
-GET http://localhost:8080/api/notes
+	GET http://localhost:8080/api/notes
 
 2. Get a single note (for id=2)
 
-http://localhost:8080/api/notes/2
+	GET http://localhost:8080/api/notes/2
 
 3. Add a new note 
 
-POST http://localhost:8080/api/notes 
+	POST http://localhost:8080/api/notes 
 
-In Postman, be sure to select options: Body > raw > JSON (application/json)
+	In Postman, be sure to select options: Body > raw > JSON (application/json)
 
-Put the following JSON in request message body.
+	Put the following JSON in request message body.
 
-{
-    "title": "First note",
-    "content": "This is some text in the first note"
-}
+	{
+		"title": "First note",
+		"content": "This is some text in the first note"
+	}
 
 4. Update an existing note (for id=2)
 
-PUT http://localhost:8080/api/notes/2
+	PUT http://localhost:8080/api/notes/2
 
-In Postman, be sure to select options: Body > raw > JSON (application/json)
+	In Postman, be sure to select options: Body > raw > JSON (application/json)
 
-Put the following JSON in request message body.
+	Put the following JSON in request message body.
 
-{
-    "title": "Third note",
-    "content": "Maecenas lobortis ante vel dolor eleifend varius. Vestibulum vehicula vehicula libero, eget faucibus turpis blandit dignissim."
-}
+	{
+		"title": "Third note",
+		"content": "Maecenas lobortis ante vel dolor eleifend varius. Vestibulum vehicula vehicula libero, eget faucibus turpis blandit dignissim."
+	}
 
 5. Delete a note (for id=4)
 
-DELETE http://localhost:8080/api/notes/4
+	DELETE http://localhost:8080/api/notes/4
 
