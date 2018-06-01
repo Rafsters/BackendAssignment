@@ -29,6 +29,7 @@ ALTER USER 'backendNotesUser'@'localhost' IDENTIFIED WITH mysql_native_password 
 
 
 /* Set up new connection, use 127.0.0.1 for Hostname, backendNotesUser for Username */
+
 /* Connect using backendNotesPassword as password */
 
 /* Create database */
