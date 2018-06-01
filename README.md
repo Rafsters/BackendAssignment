@@ -57,7 +57,7 @@ revtstmp bigint,
 CONSTRAINT revinfo_pkey PRIMARY KEY (rev)
 );
 
-/* Create table notes_aud where are versions of notes are stored */
+/* Create table notes_aud where every version of a note is stored */
 
 CREATE TABLE notes_aud
 (
@@ -122,3 +122,6 @@ ON UPDATE NO ACTION ON DELETE NO ACTION
 
 	DELETE http://localhost:8080/api/notes/4
 
+6. Get history of changes for particular note (for id=2)
+
+	GET http://localhost:8080/api/notes/history/2
