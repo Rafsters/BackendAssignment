@@ -126,3 +126,9 @@ ON UPDATE NO ACTION ON DELETE NO ACTION
 6. Get history of changes for particular note (for id=2)
 
 	GET http://localhost:8080/api/notes/history/2
+
+	
+### Example data 
+
+<p align="center">
+<img src="example_db_data/example_db_data.png" alt="example data" width="774" height="502"/></p>
