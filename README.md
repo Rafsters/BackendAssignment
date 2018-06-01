@@ -83,7 +83,7 @@ ON UPDATE NO ACTION ON DELETE NO ACTION
 
 3. Open project with IDE and run it on server.
 
-### Example usages (ie. like example curl commands)
+### Example usages (Use API development environment: Postman)
 
 1. Get a list of notes
 
