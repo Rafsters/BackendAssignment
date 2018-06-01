@@ -2,7 +2,7 @@
 
 ### What is required for running the project
 
-Database: MySQL 8.0.11
+Database Management System: MySQL 8.0.11
 
 IDE: IntelliJ IDEA with Maven
 
