@@ -1,4 +1,7 @@
-# BackendAssignment
+# Backend Developer Assignment
+
+The goal of this assignment is to implement RESTful API webservice that will be responsible for
+managing and storing in database simple notes (without the UI part).
 
 ### What is required for running the project
 
